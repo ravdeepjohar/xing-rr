@@ -10,10 +10,10 @@ def parse_impressions(filepath):
 		csvreader = csv.DictReader(csv_file, delimiter="\t")
 		impressions = []
 		for line in csvreader:
-			#try:
-			impressions.append(Impression(line['user_id'], line['year'], line['week'], line['items']))
-			#except:
-			#	pass
+			try:
+				yield Impression(line['user_id'], line['year'], line['week'], line['items'].split(","))
+			except:
+				pass
 
-		return impressions
+		
 
